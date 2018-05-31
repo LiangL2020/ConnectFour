@@ -11,12 +11,38 @@ public class ConnectFourMain extends JPanel {
 
     //constructor
     public ConnectFourMain(int width, int height){
+        setSize(width, height);
+        grid = new int[6][7];
+
+        //-1 is blue, 0 is open, 1 is red
+        //assigns 0 to all positions
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                grid[r][c] = 0;
+            }
+        }
+    }
+
+    //check if it is in the board
+    public boolean isLegal(int r, int c){
+        if(r >= 0 && r < grid.length && c >= 0 && c < grid[0].length)
+            return true;
+        return false;
+    }
+
+    public int colorPiece(){
 
     }
 
     //check if win (4 in a row)
     public boolean didWin(){
-
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                if(isLegal(r, c)){
+                    if(grid[r][c] != 0 && grid[r][c+1] != 0 && grid[r][c+2] != 0 && grid[r][c+3] != 0 && )
+                }
+            }
+        }
     }
 
     //return true if didWin is false && everything is filled up
@@ -43,8 +69,8 @@ public class ConnectFourMain extends JPanel {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Connect 4");
         frame.setDefaultCloseOperation(3);
-        int width = 800;
-        int height = 800; //short?
+        short width = 800;
+        short height = 800;
         frame.setPreferredSize(new Dimension(width, height + 24));
         ConnectFourMain panel = new ConnectFourMain(width, height);
         panel.setFocusable(true);
