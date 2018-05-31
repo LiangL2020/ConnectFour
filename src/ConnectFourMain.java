@@ -45,6 +45,22 @@ public class ConnectFourMain extends JPanel {
         }
     }
 
+    //TODO: do we need this???
+    //check if 4 in a row
+    public boolean checkRow(int r){
+
+    }
+
+    //check if 4 in a col
+    public boolean checkCol(int c){
+
+    }
+
+    //check if 4 in diagonal
+    public boolean checkDiag(int d){
+
+    }
+
     //return true if didWin is false && everything is filled up
     public boolean didTie(){
 
