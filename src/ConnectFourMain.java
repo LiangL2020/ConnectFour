@@ -1,29 +1,42 @@
 import javax.swing.*;
 import java.awt.*;
 
+
 /**
  * Created by student on 5/30/18.
  */
 public class ConnectFourMain extends JPanel {
     //instance fields
-    private int[][] grid = new int[6][7];
+    private int[][] grid;
 
     //constructor
-    public ConnectFourMain(){
-        grid = grid;
+    public ConnectFourMain(int width, int height){
+
     }
 
     //check if win (4 in a row)
     public boolean didWin(){
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
 
-            }
-        }
     }
 
     //return true if didWin is false && everything is filled up
     public boolean didTie(){
+
+    }
+
+    public void paintComponent(Graphics g) {
+        Graphics2D g2= (Graphics2D) g;
+
+        int squarelength= 103;
+        g2.setColor(new Color(255, 255, 93));
+        g2.fillRect(10,10, 7*squarelength, 6*squarelength);
+        for (int r = 15; r < 7*squarelength; r= r+103) {
+            for (int c = 15; c < 6*squarelength; c= c+103) {
+                g2.setColor(new Color(255, 255, 255));
+                g2.fillOval(r, c, 90,90);
+            }
+
+        }
 
     }
 
@@ -39,5 +52,7 @@ public class ConnectFourMain extends JPanel {
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
+
+
     }
 }
