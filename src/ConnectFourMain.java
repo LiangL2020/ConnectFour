@@ -39,7 +39,7 @@ public class ConnectFourMain extends JPanel {
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
                 if(isLegal(r, c)){
-                    if(grid[r][c] != 0 && grid[r][c+1] != 0 && grid[r][c+2] != 0 && grid[r][c+3] != 0 && )
+
                 }
             }
         }
