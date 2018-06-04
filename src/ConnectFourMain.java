@@ -30,6 +30,7 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
+
     public int colorPiece(){
 
         return 5;

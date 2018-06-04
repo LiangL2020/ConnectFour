@@ -6,19 +6,19 @@ import java.awt.*;
  * Created by student on 5/31/18.
  */
 public class Piece {
-    private String color;
+    private int color;
 
-    public Piece (String color){
+    public Piece (int color){
         this.color =color;
 
     }
 
     public void draw(Graphics2D g2){
-        if(color.equals("blue")){
+        if(color==-1){
             g2.setColor(Color.BLUE);
             g2.fillOval(100,100,100,100);
         }
-        if(color.equals("red")){
+        if(color==1){
             g2.setColor(Color.RED);
             g2.fillOval(200, 200, 100, 100);
         }
