@@ -37,15 +37,15 @@ public class ConnectFourMain extends JPanel {
     }
 
     //check if win (4 in a row)
-    public boolean didWin(){
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                if(isLegal(r, c)){
-
-                }
-            }
-        }
-    }
+//    public boolean didWin(){
+//        for (int r = 0; r < grid.length; r++) {
+//            for (int c = 0; c < grid[0].length; c++) {
+//                if(isLegal(r, c)){
+//
+//                }
+//            }
+//        }
+//    }
 
     //TODO: do we need this???
     //check if 4 in a row
