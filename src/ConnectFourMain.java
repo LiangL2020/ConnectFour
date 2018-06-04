@@ -32,6 +32,8 @@ public class ConnectFourMain extends JPanel {
 
     public int colorPiece(){
 
+        return 5;
+
     }
 
     //check if win (4 in a row)
