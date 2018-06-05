@@ -39,8 +39,6 @@ public class ConnectFourMain extends JPanel {
                 int r = y / h;
                 int c = x / w;
 
-                    ConnectFourMain.this.turnCounter();
-
                 ConnectFourMain.this.repaint();
             }
 
@@ -72,11 +70,21 @@ public class ConnectFourMain extends JPanel {
     }
 
     //return true if didWin is false && everything is filled up
-//    public boolean didTie(){
-//
-//    }
+    public boolean didTie(){
+        boolean right = false;
+        if(!didWin()) {
+            for (int r = 0; r < grid.length; r++) {
+                for (int c = 0; c < grid[0].length; c++) {
+                    if (grid[r][c] != 0)
+                        right = true;
+                    else
+                        right = false;
+                }
+            }
+        }
+        return right;
+    }
 
-    //TODO: do we need this???
     //check if 4 in a row
     public boolean checkRow(){
         Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
