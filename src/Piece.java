@@ -1,4 +1,5 @@
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -8,17 +9,23 @@ public class Piece {
     private int color;
 
     public Piece (int color){
-        this.color =color;
+        this.color = color;
     }
 
-    public void draw(Graphics2D g2, int x, int y){
+    public int getColor(){
+        return color;
+    }
+
+    public void draw(Graphics2D g2){
+        //BLUE
         if(color == -1){
             g2.setColor(new Color(160, 191, 255));
-            g2.fillOval(x,y,90,90);
+            g2.fillOval(100,100,100,100);
         }
+        //RED
         if(color == 1){
             g2.setColor(new Color(250, 155, 160));
-            g2.fillOval(x, y, 90, 90);
+            g2.fillOval(200, 200, 100, 100);
         }
     }
 
