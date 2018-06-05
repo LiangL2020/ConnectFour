@@ -2,6 +2,8 @@ import javafx.scene.input.PickResult;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 /**
@@ -24,6 +26,33 @@ public class ConnectFourMain extends JPanel {
                 grid[r][c] = 0;
             }
         }
+
+        this.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            public void mousePressed(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+                int w = ConnectFourMain.this.getWidth() / 3;
+                int h = ConnectFourMain.this.getHeight() / 3;
+                int r = y / h;
+                int c = x / w;
+
+                    ConnectFourMain.this.turnCounter();
+
+                ConnectFourMain.this.repaint();
+            }
+
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            public void mouseExited(MouseEvent e) {
+            }
+        });
 
     }
 
