@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 
 /**
- * Created by student on 5/30/18.
+ * Created by the awesome group on 5/30/18.
  */
 public class ConnectFourMain extends JPanel {
     //instance fields
@@ -38,6 +38,8 @@ public class ConnectFourMain extends JPanel {
                 int h = ConnectFourMain.this.getHeight() / 3;
                 int r = y / h;
                 int c = x / w;
+
+                    ConnectFourMain.this.turnCounter();
 
                 ConnectFourMain.this.repaint();
             }
@@ -70,21 +72,11 @@ public class ConnectFourMain extends JPanel {
     }
 
     //return true if didWin is false && everything is filled up
-    public boolean didTie(){
-        boolean right = false;
-        if(!didWin()) {
-            for (int r = 0; r < grid.length; r++) {
-                for (int c = 0; c < grid[0].length; c++) {
-                    if (grid[r][c] != 0)
-                        right = true;
-                    else
-                        right = false;
-                }
-            }
-        }
-        return right;
-    }
+//    public boolean didTie(){
+//
+//    }
 
+    //TODO: do we need this???
     //check if 4 in a row
     public boolean checkRow(){
         Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
