@@ -1,7 +1,7 @@
-import javafx.scene.input.PickResult;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -10,12 +10,95 @@ import java.awt.*;
 public class ConnectFourMain extends JPanel {
     //instance fields
     private int[][] grid;
-    private int turn = 0;
+    private JButton one, two, three, four, five, six, seven;
+    private boolean blue, red, dummy;
+
 
     //constructor
     public ConnectFourMain(int width, int height){
         setSize(width, height);
         grid = new int[6][7];
+        blue= false;
+        red= false;
+
+        setLayout(null);
+        one = new JButton("");
+        add(one);
+        one.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                }
+            });
+
+        one.setBounds(22, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        two= new JButton("");
+        add(two);
+        two.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        two.setBounds(125, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        three = new JButton("");
+        add(three);
+        three.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        three.setBounds(228, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        four = new JButton("");
+        add(four);
+        four.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        four.setBounds(331, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        five = new JButton("");
+        add(five);
+        five.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        five.setBounds(434, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        six = new JButton("");
+        add(six);
+        six.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        six.setBounds(537, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        seven = new JButton("");
+        add(seven);
+        seven.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        seven.setBounds(640, 10, 80, 40);
+/////////////////////////////////////////////////////////
 
         //-1 is blue, 0 is open, 1 is red
         //assigns 0 to all positions
@@ -24,7 +107,6 @@ public class ConnectFourMain extends JPanel {
                 grid[r][c] = 0;
             }
         }
-
     }
 
     //check if it is in the board
@@ -34,129 +116,54 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
-    //TODO
-    //check if win (4 in a row)
-    public boolean didWin(){
-        if(checkRow() || checkCol() || checkDiagA() || checkDiagB())
-            return true;
-        return false;
+    public int colorPiece(){
+
+        return 5;
+
     }
 
-    //return true if didWin is false && everything is filled up
+//    //check if win (4 in a row)
+//    public boolean didWin(){
+//        for (int r = 0; r < grid.length; r++) {
+//            for (int c = 0; c < grid[0].length; c++) {
+//                if(isLegal(r, c)){
+//
+//                }
+//            }
+//        }
+//    }
+//
+//    //TODO: do we need this???
+//    //check if 4 in a row
+//    public boolean checkRow(int r){
+//
+//    }
+//
+//    //check if 4 in a col
+//    public boolean checkCol(int c){
+//
+//    }
+//
+//    //check if 4 in diagonal
+//    public boolean checkDiag(int d){
+//
+//    }
+//
+//    //return true if didWin is false && everything is filled up
 //    public boolean didTie(){
 //
 //    }
 
-    //TODO: do we need this???
-    //check if 4 in a row
-    public boolean checkRow(){
-        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
-        int count = 0;
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                while(count < 4){
-                    if(isLegal(r, c) && grid[r][c] == a.getColor()) //TODO: check the colors
-                        count ++;
-                    if(isLegal(r, c + 1) && grid[r][c + 1] == a.getColor())
-                        count ++;
-                    if(isLegal(r, c + 2) && grid[r][c + 2] == a.getColor())
-                        count ++;
-                    if(isLegal(r, c + 3) && grid[r][c + 3] == a.getColor())
-                        count ++;
-                }
-            }
-        }
-        if(count == 4)
-            return true;
-        return false;
-    }
 
-    //check if 4 in a col
-    public boolean checkCol(){
-        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
-        int count = 0;
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                while(count < 4 && a.getColor() != 0){
-                    if(isLegal(r, c) && grid[r][c] == a.getColor()) //TODO: check the colors
-                        count ++;
-                    if(isLegal(r + 1, c) && grid[r + 1][c] == a.getColor())
-                        count ++;
-                    if(isLegal(r + 2, c) && grid[r + 2][c] == a.getColor())
-                        count ++;
-                    if(isLegal(r + 3, c) && grid[r + 1][c] == a.getColor())
-                        count ++;
-                }
-            }
-        }
-        if(count == 4)
-            return true;
-        return false;
-    }
-
-    //check if 4 in diagonal
-    public boolean checkDiagA(){
-        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
-        int count = 0;
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                while(count < 4 && a.getColor() != 0){
-                    if(isLegal(r, c) && grid[r][c] == a.getColor()) //TODO: check the colors
-                        count ++;
-                    if(isLegal(r + 1, c + 1) && grid[r + 1][c + 1] == a.getColor())
-                        count ++;
-                    if(isLegal(r + 2, c + 2) && grid[r + 2][c + 2] == a.getColor())
-                        count ++;
-                    if(isLegal(r + 3, c + 3) && grid[r + 1][c + 3] == a.getColor())
-                        count ++;
-                }
-            }
-        }
-
-        if(count == 4)
-            return true;
-        return false;
-    }
-
-    public boolean checkDiagB(){
-        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
-        int count = 0;
-        for (int r = grid.length; r <= 0; r--) {
-            for (int c = 0; c < grid[0].length; c++) {
-                while(count < 4 && a.getColor() != 0){
-                    if(isLegal(r, c) && grid[r][c] == a.getColor()) //TODO: check the colors
-                        count ++;
-                    if(isLegal(r - 1, c - 1) && grid[r - 1][c - 1] == a.getColor())
-                        count ++;
-                    if(isLegal(r - 2, c - 2) && grid[r - 2][c - 2] == a.getColor())
-                        count ++;
-                    if(isLegal(r - 3, c - 3) && grid[r - 1][c - 3] == a.getColor())
-                        count ++;
-                }
-            }
-        }
-
-        if(count == 4)
-            return true;
-        return false;
-    }
-
-    public void turnCounter(){
-        if(this.turn == 1) {
-            ++this.turn;
-        } else {
-            --this.turn;
-        }
-    }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2= (Graphics2D) g;
 
         int squarelength= 103;
         g2.setColor(new Color(255, 255, 93));
-        g2.fillRect(10,10, 7*squarelength, 6*squarelength);
+        g2.fillRect(10,50, 7*squarelength, 6*squarelength);
         for (int r = 15; r < 7*squarelength; r= r+103) {
-            for (int c = 15; c < 6*squarelength; c= c+103) {
+            for (int c =55; c < 6*squarelength; c= c+103) {
                 g2.setColor(new Color(255, 255, 255));
                 g2.fillOval(r, c, 90,90);
             }
