@@ -1,7 +1,7 @@
-import javafx.scene.input.PickResult;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,11 +13,99 @@ public class ConnectFourMain extends JPanel {
     //instance fields
     private int[][] grid;
     private int turn = 0;
+    private JButton one, two, three, four, five, six, seven;
+
 
     //constructor
     public ConnectFourMain(int width, int height){
         setSize(width, height);
         grid = new int[6][7];
+
+        setLayout(null);
+        one = new JButton("");
+        add(one);
+        one.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        one.setBounds(22, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        two= new JButton("");
+        add(two);
+        two.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        two.setBounds(125, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        three = new JButton("");
+        add(three);
+        three.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        three.setBounds(228, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        four = new JButton("");
+        add(four);
+        four.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        four.setBounds(331, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        five = new JButton("");
+        add(five);
+        five.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        five.setBounds(434, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        six = new JButton("");
+        add(six);
+        six.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        six.setBounds(537, 10, 80, 40);
+/////////////////////////////////////////////////////////
+        setLayout(null);
+        seven = new JButton("");
+        add(seven);
+        seven.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        seven.setBounds(640, 10, 80, 40);
+/////////////////////////////////////////////////////////
+
+        //-1 is blue, 0 is open, 1 is red
+        //assigns 0 to all positions
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                grid[r][c] = 0;
+            }
+        }
 
         //-1 is blue, 0 is open, 1 is red
         //assigns 0 to all positions
