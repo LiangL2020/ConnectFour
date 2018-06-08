@@ -19,10 +19,10 @@ public class Piece {
     //getColumn of Piece (JButton clicked)
     //
 
-    public int getRow(){
-        Piece a = new Piece (getColor());
-
-    }
+//    public int getRow(){
+//        Piece a = new Piece (getColor());
+//
+//    }
 
     public void draw(Graphics2D g2){
         if(color == -1){
