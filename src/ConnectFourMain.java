@@ -16,10 +16,13 @@ public class ConnectFourMain extends JPanel {
     private JButton one, two, three, four, five, six, seven;
     private boolean[][] red, blue;
 
+
     //constructor
     public ConnectFourMain(int width, int height){
         setSize(width, height);
         grid = new int[6][7];
+        red= new boolean[6][7];
+        blue= new boolean[6][7];
 
         setLayout(null);
         one = new JButton("");
@@ -127,6 +130,8 @@ public class ConnectFourMain extends JPanel {
                 int r = y / h;
                 int c = x / w;
 
+                    ConnectFourMain.this.turnCounter();
+
                 ConnectFourMain.this.repaint();
             }
 
@@ -139,6 +144,7 @@ public class ConnectFourMain extends JPanel {
             public void mouseExited(MouseEvent e) {
             }
         });
+
     }
 
     //check if it is in the board
@@ -161,9 +167,10 @@ public class ConnectFourMain extends JPanel {
 //
 //    }
 
+    //TODO: do we need this???
     //check if 4 in a row
     public boolean checkRow(){
-        Piece a = new Piece (turn); //TODO: move that to other places cause not making new piece in check
+        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
         int count = 0;
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
@@ -186,7 +193,7 @@ public class ConnectFourMain extends JPanel {
 
     //check if 4 in a col
     public boolean checkCol(){
-        Piece a = new Piece (turn); //TODO: move that to other places cause not making new piece in check
+        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
         int count = 0;
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
@@ -209,7 +216,7 @@ public class ConnectFourMain extends JPanel {
 
     //check if 4 in diagonal
     public boolean checkDiagA(){
-        Piece a = new Piece (turn); //TODO: move that to other places cause not making new piece in check
+        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
         int count = 0;
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
@@ -232,7 +239,7 @@ public class ConnectFourMain extends JPanel {
     }
 
     public boolean checkDiagB(){
-        Piece a = new Piece (turn); //TODO: move that to other places cause not making new piece in check
+        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
         int count = 0;
         for (int r = grid.length; r <= 0; r--) {
             for (int c = 0; c < grid[0].length; c++) {
@@ -254,15 +261,12 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
-    //starts with red (1)
     public void turnCounter(){
-        if(turn == 0)
+        if(this.turn == 1) {
             ++this.turn;
-
-        if(turn == 1)
-            turn -= 2;
-        else if(turn == -1)
-            turn += 2;
+        } else {
+            --this.turn;
+        }
     }
 
     public void paintComponent(Graphics g) {
