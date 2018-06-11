@@ -17,6 +17,7 @@ public class ConnectFourMain extends JPanel {
     private boolean[][] red, blue;
 
 
+
     //constructor
     public ConnectFourMain(int width, int height){
         setSize(width, height);
@@ -24,12 +25,13 @@ public class ConnectFourMain extends JPanel {
         red= new boolean[6][7];
         blue= new boolean[6][7];
 
+
         //-1 is blue, 0 is open, 1 is red
         //assigns 0 or false to all positions
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
                 grid[r][c] = 0;
-                red[r][c] = false;
+                red[r][c] = true;
                 blue[r][c] = false;
             }
         }
@@ -341,6 +343,34 @@ public class ConnectFourMain extends JPanel {
             }
 
         }
+
+        int j = 0;
+        int k = 0;
+        while (j<6){
+            for (int r = 15; r < 7*squarelength; r= r+103) {
+                for (int c = 15; c < 6*squarelength; c= c+103) {
+                    if (red[j][k]){
+                        g2.setColor(new Color(255, 2, 0));
+                        g2.fillOval(r, c, 90,90);
+                    }
+                    if(blue[j][k]){
+                        g2.setColor(new Color(5, 0, 255));
+                        g2.fillOval(r, c, 90,90);
+                    }
+                    k++;
+                    if(k==7){
+                        k=0;
+                        j++;
+                    }
+//                    g2.setColor(new Color(255, 255, 255));
+//                    g2.fillOval(r, c, 90,90);
+                }
+        }
+
+
+    }
+
+
 
     }
 
