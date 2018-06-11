@@ -24,6 +24,16 @@ public class ConnectFourMain extends JPanel {
         red= new boolean[6][7];
         blue= new boolean[6][7];
 
+        //-1 is blue, 0 is open, 1 is red
+        //assigns 0 or false to all positions
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                grid[r][c] = 0;
+                red[r][c] = false;
+                blue[r][c] = false;
+            }
+        }
+
         setLayout(null);
         one = new JButton("");
         add(one);
@@ -87,7 +97,11 @@ public class ConnectFourMain extends JPanel {
                             hi = mid - 1;
                         }
                     }
-                        grid[mid][4] = turn; // returns the most recent 0 spot whatever
+                    grid[mid][4] = turn; // returns the most recent 0 spot whatever
+                    if(turn == 1)
+                        red[r][4] = true;
+                    else if(turn == -1)
+                        blue [r][4] = true;
                 }
             }
         });
@@ -113,6 +127,10 @@ public class ConnectFourMain extends JPanel {
                         }
                     }
                     grid[mid][5] = turn; // returns the most recent 0 spot whatever
+                    if(turn == 1)
+                        red[r][5] = true;
+                    else if(turn == -1)
+                        blue [r][5] = true;
                 }
             }
         });
@@ -138,19 +156,15 @@ public class ConnectFourMain extends JPanel {
                         }
                     }
                     grid[mid][6] = turn; // returns the most recent 0 spot whatever
+                    if(turn == 1)
+                        red[r][6] = true;
+                    else if(turn == -1)
+                        blue [r][6] = true;
                 }
             }
         });
         seven.setBounds(640, 10, 80, 40);
 /////////////////////////////////////////////////////////
-
-        //-1 is blue, 0 is open, 1 is red
-        //assigns 0 to all positions
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                grid[r][c] = 0;
-            }
-        }
 
         //-1 is blue, 0 is open, 1 is red
         //assigns 0 to all positions
