@@ -74,7 +74,21 @@ public class ConnectFourMain extends JPanel {
         five.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for (int r = 0; r < grid.length; r++) {
+                    turnCounter();
+                    int hi = grid.length - 1;
+                    int lo = 0;
+                    int mid = 0;
+                    while(lo <= hi){
+                        mid = (hi + lo)/2;
+                        if(grid[mid][4] == 0){
+                            lo = mid + 1;
+                        }else{
+                            hi = mid - 1;
+                        }
+                    }
+                        grid[mid][4] = turn; // returns the most recent 0 spot whatever
+                }
             }
         });
         five.setBounds(434, 10, 80, 40);
@@ -85,7 +99,21 @@ public class ConnectFourMain extends JPanel {
         six.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for (int r = 0; r < grid.length; r++) {
+                    turnCounter();
+                    int hi = grid.length - 1;
+                    int lo = 0;
+                    int mid = 0;
+                    while(lo <= hi){
+                        mid = (hi + lo)/2;
+                        if(grid[mid][5] == 0){
+                            lo = mid + 1;
+                        }else{
+                            hi = mid - 1;
+                        }
+                    }
+                    grid[mid][5] = turn; // returns the most recent 0 spot whatever
+                }
             }
         });
         six.setBounds(537, 10, 80, 40);
@@ -96,7 +124,21 @@ public class ConnectFourMain extends JPanel {
         seven.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for (int r = 0; r < grid.length; r++) {
+                    turnCounter();
+                    int hi = grid.length - 1;
+                    int lo = 0;
+                    int mid = 0;
+                    while(lo <= hi){
+                        mid = (hi + lo)/2;
+                        if(grid[mid][6] == 0){
+                            lo = mid + 1;
+                        }else{
+                            hi = mid - 1;
+                        }
+                    }
+                    grid[mid][6] = turn; // returns the most recent 0 spot whatever
+                }
             }
         });
         seven.setBounds(640, 10, 80, 40);
@@ -118,32 +160,32 @@ public class ConnectFourMain extends JPanel {
             }
         }
 
-        this.addMouseListener(new MouseListener() {
-            public void mouseClicked(MouseEvent e) {
-            }
-
-            public void mousePressed(MouseEvent e) {
-                int x = e.getX();
-                int y = e.getY();
-                int w = ConnectFourMain.this.getWidth() / 3;
-                int h = ConnectFourMain.this.getHeight() / 3;
-                int r = y / h;
-                int c = x / w;
-
-                    ConnectFourMain.this.turnCounter();
-
-                ConnectFourMain.this.repaint();
-            }
-
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            public void mouseExited(MouseEvent e) {
-            }
-        });
+//        this.addMouseListener(new MouseListener() {
+//            public void mouseClicked(MouseEvent e) {
+//            }
+//
+//            public void mousePressed(MouseEvent e) {
+//                int x = e.getX();
+//                int y = e.getY();
+//                int w = ConnectFourMain.this.getWidth() / 3;
+//                int h = ConnectFourMain.this.getHeight() / 3;
+//                int r = y / h;
+//                int c = x / w;
+//
+//                    ConnectFourMain.this.turnCounter();
+//
+//                ConnectFourMain.this.repaint();
+//            }
+//
+//            public void mouseReleased(MouseEvent e) {
+//            }
+//
+//            public void mouseEntered(MouseEvent e) {
+//            }
+//
+//            public void mouseExited(MouseEvent e) {
+//            }
+//        });
 
     }
 
@@ -262,10 +304,13 @@ public class ConnectFourMain extends JPanel {
     }
 
     public void turnCounter(){
-        if(this.turn == 1) {
-            ++this.turn;
-        } else {
-            --this.turn;
+        if (turn == 0)
+            turn--;
+
+        if(turn == 1) {
+            turn -= 2;
+        }else if(turn == -1){
+            turn += 2;
         }
     }
 
