@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 /**
  * Created by student on 5/30/18.
  */
@@ -114,7 +113,7 @@ public class ConnectFourMain extends JPanel {
 
                 int r = grid.length - 1;
 
-                while (r > -1 && !isItPlayable(r, 0)) {
+                while (r > -1 && !isItPlayable(r, 2)) {
                     r--;
                 }
                 if(r < 0){
@@ -122,15 +121,15 @@ public class ConnectFourMain extends JPanel {
                 }
                 else{
                     if (turn % 2 == 0) {
-                        grid[r][0] = 1;
-                        red[r][0] = true;
+                        grid[r][2] = 1;
+                        red[r][2] = true;
                         turn++;
 
                     }
 
                     else {
-                        grid[r][0] = -1;
-                        blue[r][0] = true;
+                        grid[r][2] = -1;
+                        blue[r][2] = true;
                         turn++;
 
                     }
@@ -151,7 +150,7 @@ public class ConnectFourMain extends JPanel {
 
                 int r = grid.length - 1;
 
-                while (r > -1 && !isItPlayable(r, 0)) {
+                while (r > -1 && !isItPlayable(r, 3)) {
                     r--;
                 }
                 if(r < 0){
@@ -159,15 +158,15 @@ public class ConnectFourMain extends JPanel {
                 }
                 else{
                     if (turn % 2 == 0) {
-                        grid[r][0] = 1;
-                        red[r][0] = true;
+                        grid[r][3] = 1;
+                        red[r][3] = true;
                         turn++;
 
                     }
 
                     else {
-                        grid[r][0] = -1;
-                        blue[r][0] = true;
+                        grid[r][3] = -1;
+                        blue[r][3] = true;
                         turn++;
 
                     }
@@ -187,7 +186,7 @@ public class ConnectFourMain extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int r = grid.length - 1;
 
-                while (r > -1 && !isItPlayable(r, 0)) {
+                while (r > -1 && !isItPlayable(r, 4)) {
                     r--;
                 }
                 if(r < 0){
@@ -195,15 +194,15 @@ public class ConnectFourMain extends JPanel {
                 }
                 else{
                     if (turn % 2 == 0) {
-                        grid[r][0] = 1;
-                        red[r][0] = true;
+                        grid[r][4] = 1;
+                        red[r][4] = true;
                         turn++;
 
                     }
 
                     else {
-                        grid[r][0] = -1;
-                        blue[r][0] = true;
+                        grid[r][4] = -1;
+                        blue[r][4] = true;
                         turn++;
 
                     }
@@ -223,7 +222,7 @@ public class ConnectFourMain extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int r = grid.length - 1;
 
-                while (r > -1 && !isItPlayable(r, 0)) {
+                while (r > -1 && !isItPlayable(r, 5)) {
                     r--;
                 }
                 if(r < 0){
@@ -231,15 +230,15 @@ public class ConnectFourMain extends JPanel {
                 }
                 else{
                     if (turn % 2 == 0) {
-                        grid[r][0] = 1;
-                        red[r][0] = true;
+                        grid[r][5] = 1;
+                        red[r][5] = true;
                         turn++;
 
                     }
 
                     else {
-                        grid[r][0] = -1;
-                        blue[r][0] = true;
+                        grid[r][5] = -1;
+                        blue[r][5] = true;
                         turn++;
 
                     }
@@ -259,7 +258,7 @@ public class ConnectFourMain extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int r = grid.length - 1;
 
-                while (r > -1 && !isItPlayable(r, 0)) {
+                while (r > -1 && !isItPlayable(r, 6)) {
                     r--;
                 }
                 if(r < 0){
@@ -267,15 +266,15 @@ public class ConnectFourMain extends JPanel {
                 }
                 else{
                     if (turn % 2 == 0) {
-                        grid[r][0] = 1;
-                        red[r][0] = true;
+                        grid[r][6] = 1;
+                        red[r][6] = true;
                         turn++;
 
                     }
 
                     else {
-                        grid[r][0] = -1;
-                        blue[r][0] = true;
+                        grid[r][6] = -1;
+                        blue[r][6] = true;
                         turn++;
 
                     }
@@ -470,33 +469,51 @@ public class ConnectFourMain extends JPanel {
 
         }
 
-        int j = 0;
-        int k = 0;
-        while (j<6){
-            for (int r = 15; r < 7*squarelength; r= r+103) {
-                for (int c = 15; c < 6*squarelength; c= c+103) {
-                    if (red[j][k]){
-                        g2.setColor(new Color(255, 2, 0));
-                        g2.fillOval(r, c, 90,90);
-                    }
-                    if(blue[j][k]){
-                        g2.setColor(new Color(5, 0, 255));
-                        g2.fillOval(r, c, 90,90);
-                    }
-                    k++;
-                    if(k==7){
-                        k=0;
-                        j++;
-                    }
-//                    g2.setColor(new Color(255, 255, 255));
-//                    g2.fillOval(r, c, 90,90);
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+
+                if(red[r][c]== true){
+                    g2.setColor(new Color(255, 2, 0));
+                    g2.fillOval(15+c*103, 15+r*103, 90,90);
                 }
+
+                if(blue[r][c]==true){
+                    g2.setColor(new Color(5, 0, 255));
+                    g2.fillOval(15+c*103, 15+r*103, 90,90);
+                }
+
+            }
+
         }
 
 
-    }
+//        int j = 0;
+//        int k = 0;
+//        while (j<6){
+//            for (int r = 15; r < 7*squarelength; r= r+103) {
+//                for (int c = 15; c < 6*squarelength; c= c+103) {
+//                    if (red[j][k]){
+//                        g2.setColor(new Color(255, 2, 0));
+//                        g2.fillOval(r, c, 90,90);
+//                    }
+//                    if(blue[j][k]){
+//                        g2.setColor(new Color(5, 0, 255));
+//                        g2.fillOval(r, c, 90,90);
+//                    }
+//                    k++;
+//                    if(k==7){
+//                        k=0;
+//                        j++;
+//                    }
+////                    g2.setColor(new Color(255, 255, 255));
+////                    g2.fillOval(r, c, 90,90);
+//                }
+//        }
+//
+//
+//    }
 
-
+    repaint();
 
     }
 
