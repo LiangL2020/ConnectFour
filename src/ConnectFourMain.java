@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 
 /**
@@ -17,22 +15,21 @@ public class ConnectFourMain extends JPanel {
     private boolean[][] red, blue;
 
 
-
     //constructor
     public ConnectFourMain(int width, int height){
         setSize(width, height);
         grid = new int[6][7];
         red= new boolean[6][7];
         blue= new boolean[6][7];
-
+        //onRow = grid.length-1;
 
         //-1 is blue, 0 is open, 1 is red
-        //assigns 0 or false to all positions
+        //assigns 0 to all positions
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
                 grid[r][c] = 0;
-                red[r][c] = true;
-                blue[r][c] = false;
+                red[r][c]= false;
+                blue[r][c]= false;
             }
         }
 
@@ -43,6 +40,30 @@ public class ConnectFourMain extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                int r = grid.length - 1;
+
+                    while (r > -1 && !isItPlayable(r, 0)) {
+                        r--;
+                    }
+                    if(r < 0){
+                        //no move in this col
+                    }
+                    else{
+                        if (turn % 2 == 0) {
+                            grid[r][0] = 1;
+                            red[r][0] = true;
+                            turn++;
+                        }
+
+                        else {
+                            grid[r][0] = -1;
+                            blue[r][0] = true;
+                            turn++;
+                        }
+
+                    }
+
+                System.out.println(turn);
             }
         });
         one.setBounds(22, 10, 80, 40);
@@ -54,6 +75,32 @@ public class ConnectFourMain extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                int r = grid.length - 1;
+
+                while (r > -1 && !isItPlayable(r, 1)) {
+                    r--;
+                }
+                if(r < 0){
+                    //no move in this col
+                }
+                else{
+                    if (turn % 2 == 0) {
+                        grid[r][1] = 1;
+                        red[r][1] = true;
+                        turn++;
+
+                    }
+
+                    else {
+                        grid[r][1] = -1;
+                        blue[r][1] = true;
+                        turn++;
+
+                    }
+
+                }
+
+                System.out.println(turn);
             }
         });
         two.setBounds(125, 10, 80, 40);
@@ -65,6 +112,32 @@ public class ConnectFourMain extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                int r = grid.length - 1;
+
+                while (r > -1 && !isItPlayable(r, 0)) {
+                    r--;
+                }
+                if(r < 0){
+                    //no move in this col
+                }
+                else{
+                    if (turn % 2 == 0) {
+                        grid[r][0] = 1;
+                        red[r][0] = true;
+                        turn++;
+
+                    }
+
+                    else {
+                        grid[r][0] = -1;
+                        blue[r][0] = true;
+                        turn++;
+
+                    }
+
+                }
+
+                System.out.println(turn);
             }
         });
         three.setBounds(228, 10, 80, 40);
@@ -76,6 +149,32 @@ public class ConnectFourMain extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                int r = grid.length - 1;
+
+                while (r > -1 && !isItPlayable(r, 0)) {
+                    r--;
+                }
+                if(r < 0){
+                    //no move in this col
+                }
+                else{
+                    if (turn % 2 == 0) {
+                        grid[r][0] = 1;
+                        red[r][0] = true;
+                        turn++;
+
+                    }
+
+                    else {
+                        grid[r][0] = -1;
+                        blue[r][0] = true;
+                        turn++;
+
+                    }
+
+                }
+
+                System.out.println(turn);
             }
         });
         four.setBounds(331, 10, 80, 40);
@@ -86,25 +185,32 @@ public class ConnectFourMain extends JPanel {
         five.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int r = 0; r < grid.length; r++) {
-                    turnCounter();
-                    int hi = grid.length - 1;
-                    int lo = 0;
-                    int mid = 0;
-                    while(lo <= hi){
-                        mid = (hi + lo)/2;
-                        if(grid[mid][4] == 0){
-                            lo = mid + 1;
-                        }else{
-                            hi = mid - 1;
-                        }
-                    }
-                    grid[mid][4] = turn; // returns the most recent 0 spot whatever
-                    if(turn == 1)
-                        red[r][4] = true;
-                    else if(turn == -1)
-                        blue [r][4] = true;
+                int r = grid.length - 1;
+
+                while (r > -1 && !isItPlayable(r, 0)) {
+                    r--;
                 }
+                if(r < 0){
+                    //no move in this col
+                }
+                else{
+                    if (turn % 2 == 0) {
+                        grid[r][0] = 1;
+                        red[r][0] = true;
+                        turn++;
+
+                    }
+
+                    else {
+                        grid[r][0] = -1;
+                        blue[r][0] = true;
+                        turn++;
+
+                    }
+
+                }
+
+                System.out.println(turn);
             }
         });
         five.setBounds(434, 10, 80, 40);
@@ -115,25 +221,32 @@ public class ConnectFourMain extends JPanel {
         six.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int r = 0; r < grid.length; r++) {
-                    turnCounter();
-                    int hi = grid.length - 1;
-                    int lo = 0;
-                    int mid = 0;
-                    while(lo <= hi){
-                        mid = (hi + lo)/2;
-                        if(grid[mid][5] == 0){
-                            lo = mid + 1;
-                        }else{
-                            hi = mid - 1;
-                        }
-                    }
-                    grid[mid][5] = turn; // returns the most recent 0 spot whatever
-                    if(turn == 1)
-                        red[r][5] = true;
-                    else if(turn == -1)
-                        blue [r][5] = true;
+                int r = grid.length - 1;
+
+                while (r > -1 && !isItPlayable(r, 0)) {
+                    r--;
                 }
+                if(r < 0){
+                    //no move in this col
+                }
+                else{
+                    if (turn % 2 == 0) {
+                        grid[r][0] = 1;
+                        red[r][0] = true;
+                        turn++;
+
+                    }
+
+                    else {
+                        grid[r][0] = -1;
+                        blue[r][0] = true;
+                        turn++;
+
+                    }
+
+                }
+
+                System.out.println(turn);
             }
         });
         six.setBounds(537, 10, 80, 40);
@@ -144,25 +257,32 @@ public class ConnectFourMain extends JPanel {
         seven.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int r = 0; r < grid.length; r++) {
-                    turnCounter();
-                    int hi = grid.length - 1;
-                    int lo = 0;
-                    int mid = 0;
-                    while(lo <= hi){
-                        mid = (hi + lo)/2;
-                        if(grid[mid][6] == 0){
-                            lo = mid + 1;
-                        }else{
-                            hi = mid - 1;
-                        }
-                    }
-                    grid[mid][6] = turn; // returns the most recent 0 spot whatever
-                    if(turn == 1)
-                        red[r][6] = true;
-                    else if(turn == -1)
-                        blue [r][6] = true;
+                int r = grid.length - 1;
+
+                while (r > -1 && !isItPlayable(r, 0)) {
+                    r--;
                 }
+                if(r < 0){
+                    //no move in this col
+                }
+                else{
+                    if (turn % 2 == 0) {
+                        grid[r][0] = 1;
+                        red[r][0] = true;
+                        turn++;
+
+                    }
+
+                    else {
+                        grid[r][0] = -1;
+                        blue[r][0] = true;
+                        turn++;
+
+                    }
+
+                }
+
+                System.out.println(turn);
             }
         });
         seven.setBounds(640, 10, 80, 40);
@@ -319,16 +439,22 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
-    public void turnCounter(){
-        if (turn == 0)
-            turn--;
+    public boolean isItPlayable(int r, int c){
 
-        if(turn == 1) {
-            turn -= 2;
-        }else if(turn == -1){
-            turn += 2;
+        if(grid[r][c]==0){
+            return true;
         }
+
+        return false;
     }
+
+//    public void turnCounter(){
+//        if(this.turn == 1) {
+//            ++this.turn;
+//        } else {
+//            --this.turn;
+//        }
+//    }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2= (Graphics2D) g;
