@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Created by student on 5/30/18.
@@ -20,7 +22,6 @@ public class ConnectFourMain extends JPanel {
         grid = new int[6][7];
         red= new boolean[6][7];
         blue= new boolean[6][7];
-        //onRow = grid.length-1;
 
         //-1 is blue, 0 is open, 1 is red
         //assigns 0 to all positions
@@ -209,7 +210,6 @@ public class ConnectFourMain extends JPanel {
 
                 }
 
-                System.out.println(turn);
             }
         });
         five.setBounds(434, 10, 80, 40);
@@ -244,8 +244,6 @@ public class ConnectFourMain extends JPanel {
                     }
 
                 }
-
-                System.out.println(turn);
             }
         });
         six.setBounds(537, 10, 80, 40);
@@ -280,20 +278,18 @@ public class ConnectFourMain extends JPanel {
                     }
 
                 }
-
-                System.out.println(turn);
             }
         });
         seven.setBounds(640, 10, 80, 40);
 /////////////////////////////////////////////////////////
-
-        //-1 is blue, 0 is open, 1 is red
-        //assigns 0 to all positions
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                grid[r][c] = 0;
-            }
-        }
+//
+//        //-1 is blue, 0 is open, 1 is red
+//        //assigns 0 to all positions
+//        for (int r = 0; r < grid.length; r++) {
+//            for (int c = 0; c < grid[0].length; c++) {
+//                grid[r][c] = 0;
+//            }
+//        }
 
 //        this.addMouseListener(new MouseListener() {
 //            public void mouseClicked(MouseEvent e) {
@@ -331,7 +327,6 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
-    //TODO
     //check if win (4 in a row)
     public boolean didWin(){
         if(checkRow() || checkCol() || checkDiagA() || checkDiagB())
@@ -340,11 +335,20 @@ public class ConnectFourMain extends JPanel {
     }
 
     //return true if didWin is false && everything is filled up
-//    public boolean didTie(){
-//
-//    }
+    public boolean didTie(){
+        boolean didNot = true;
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                if(!didWin() && didNot)
+                    if(grid[r][c] != 0)
+                        didNot = false;
+            }
+        }
+        if(!didNot)
+            return true;
+        return false;
+    }
 
-    //TODO: do we need this???
     //check if 4 in a row
     public boolean checkRow(){
         Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
@@ -446,14 +450,6 @@ public class ConnectFourMain extends JPanel {
 
         return false;
     }
-
-//    public void turnCounter(){
-//        if(this.turn == 1) {
-//            ++this.turn;
-//        } else {
-//            --this.turn;
-//        }
-//    }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2= (Graphics2D) g;
