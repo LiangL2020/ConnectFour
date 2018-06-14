@@ -351,8 +351,7 @@ public class ConnectFourMain extends JPanel {
 
     //check if 4 in a row
     public boolean checkRow(){
-        int count = 0;
-//        System.out.println("HAPPY");
+
         for (int r = 5; r > -1; r--) {
             //for (int c = 0; c < 1; c++) {
             if (red[r][0] == red[r][1] && red[r][1]==red[r][2]&& red[r][2] == red[r][3]&& red[r][0]) {
@@ -371,43 +370,29 @@ public class ConnectFourMain extends JPanel {
                 System.out.println("redwins");
                 return true;
             }
-//            if(red[r][1] == red[r][2] == red[r][3] == red[r][4]&& red[r][1]){
-//                System.out.println("redwins");
-//                return true;
-//            }
-//            if(red[r][2] == red[r][3] == red[r][4] == red[r][5]&& red[r][2]){
-//                System.out.println("redwins");
-//                return true;
-//            }
-//            if(red[r][3] == red[r][4] == red[r][5] == red[r][6]&& red[r][3]){
-//                System.out.println("redwins");
-//                return true;
-//            }
-
-            //}
-        }
-//        for (int r = 5; r > -1; r--) {
-//            for (int c = 0; c < grid[0].length; c++) {
-////                while(count < 4){
-////                    iffred[r][c] //TODO: check the colors
-////                        count ++;
-////                    if(isLegal(r, c + 1) && grid[r][c + 1] == a.getColor())
-////                        count ++;
-////                    if(isLegal(r, c + 2) && grid[r][c + 2] == a.getColor())
-////                        count ++;
-////                    if(isLegal(r, c + 3) && grid[r][c + 3] == a.getColor())
-////                        count ++;
-////                }
 //
-//                if(red[r][c] == red[r][c+1]== red[r][c+2]== red[r][c+3]){
-//                    System.out.println("red wins!");
-//                }
-//            }
-//        }
-        //start r=5, c=0;
+        }
 
-        if(count == 4)
-            return true;
+
+        for (int r = 5; r > -1; r--) {
+            if (blue[r][0] == blue[r][1] && blue[r][1]==blue[r][2]&& blue[r][2] == blue[r][3]&& blue[r][0]) {
+                System.out.println("bluewins");
+                return true;
+            }
+            if (blue[r][1] == blue[r][2] && blue[r][2]==blue[r][3]&& blue[r][3] == blue[r][4]&& blue[r][1]) {
+                System.out.println("bluewins");
+                return true;
+            }
+            if (blue[r][2] == blue[r][3] && blue[r][3]==blue[r][4]&& blue[r][4] == blue[r][5]&& blue[r][2]) {
+                System.out.println("bluewins");
+                return true;
+            }
+            if (blue[r][3] == blue[r][4] && blue[r][4]==blue[r][5]&& blue[r][5] == blue[r][6]&& blue[r][3]) {
+                System.out.println("bluewins");
+                return true;
+            }
+//
+        }
         return false;
     }
 
