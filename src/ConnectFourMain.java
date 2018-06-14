@@ -329,7 +329,7 @@ public class ConnectFourMain extends JPanel {
 
     //check if win (4 in a row)
     public boolean didWin(){
-        if(checkRow() || checkCol() || checkDiagARed() || checkDiagABlue() || checkDiagBRed() || checkDiagBBlue())
+        if(checkRow() || checkCol() || checkDiagA() || checkDiagB())
             return true;
         return false;
     }
@@ -351,103 +351,111 @@ public class ConnectFourMain extends JPanel {
 
     //check if 4 in a row
     public boolean checkRow(){
+        int count = 0;
+//        System.out.println("HAPPY");
+        for (int r = 5; r > -1; r--) {
+            //for (int c = 0; c < 1; c++) {
+            if (red[r][0] == red[r][1] && red[r][1]==red[r][2]&& red[r][2] == red[r][3]&& red[r][0]) {
+                System.out.println("redwins");
+                return true;
+            }
+            if (red[r][1] == red[r][2] && red[r][2]==red[r][3]&& red[r][3] == red[r][4]&& red[r][1]) {
+                System.out.println("redwins");
+                return true;
+            }
+            if (red[r][2] == red[r][3] && red[r][3]==red[r][4]&& red[r][4] == red[r][5]&& red[r][2]) {
+                System.out.println("redwins");
+                return true;
+            }
+            if (red[r][3] == red[r][4] && red[r][4]==red[r][5]&& red[r][5] == red[r][6]&& red[r][3]) {
+                System.out.println("redwins");
+                return true;
+            }
+//            if(red[r][1] == red[r][2] == red[r][3] == red[r][4]&& red[r][1]){
+//                System.out.println("redwins");
+//                return true;
+//            }
+//            if(red[r][2] == red[r][3] == red[r][4] == red[r][5]&& red[r][2]){
+//                System.out.println("redwins");
+//                return true;
+//            }
+//            if(red[r][3] == red[r][4] == red[r][5] == red[r][6]&& red[r][3]){
+//                System.out.println("redwins");
+//                return true;
+//            }
+
+            //}
+        }
+//        for (int r = 5; r > -1; r--) {
+//            for (int c = 0; c < grid[0].length; c++) {
+////                while(count < 4){
+////                    iffred[r][c] //TODO: check the colors
+////                        count ++;
+////                    if(isLegal(r, c + 1) && grid[r][c + 1] == a.getColor())
+////                        count ++;
+////                    if(isLegal(r, c + 2) && grid[r][c + 2] == a.getColor())
+////                        count ++;
+////                    if(isLegal(r, c + 3) && grid[r][c + 3] == a.getColor())
+////                        count ++;
+////                }
+//
+//                if(red[r][c] == red[r][c+1]== red[r][c+2]== red[r][c+3]){
+//                    System.out.println("red wins!");
+//                }
+//            }
+//        }
+        //start r=5, c=0;
+
+        if(count == 4)
+            return true;
         return false;
     }
 
     //check if 4 in a col
     public boolean checkCol(){
+        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
+        int count = 0;
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                while(count < 4 && a.getColor() != 0){
+                    if(isLegal(r, c) && grid[r][c] == a.getColor()) //TODO: check the colors
+                        count ++;
+                    if(isLegal(r + 1, c) && grid[r + 1][c] == a.getColor())
+                        count ++;
+                    if(isLegal(r + 2, c) && grid[r + 2][c] == a.getColor())
+                        count ++;
+                    if(isLegal(r + 3, c) && grid[r + 1][c] == a.getColor())
+                        count ++;
+                }
+            }
+        }
+        if(count == 4)
+            return true;
         return false;
     }
 
     //check if 4 in diagonal
-    public boolean checkDiagARed(){
+    public boolean checkDiagA(){
+        Piece a = new Piece (1); //TODO: move that to other places cause not making new piece in check
+        int count = 0;
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
-                if(r >= 0 && r+3 <= 5 && c >= 0 && c+3 <=6) {
-                    if(red[r][c] && red[r + 1][c + 1] && red[r + 2][c + 2] && red[r + 3][c + 3])
-                        return true;
+                while(count < 4 && a.getColor() != 0){
+                    if(isLegal(r, c) && grid[r][c] == a.getColor()) //TODO: check the colors
+                        count ++;
+                    if(isLegal(r + 1, c + 1) && grid[r + 1][c + 1] == a.getColor())
+                        count ++;
+                    if(isLegal(r + 2, c + 2) && grid[r + 2][c + 2] == a.getColor())
+                        count ++;
+                    if(isLegal(r + 3, c + 3) && grid[r + 1][c + 3] == a.getColor())
+                        count ++;
                 }
             }
         }
 
+        if(count == 4)
+            return true;
         return false;
-
-//        int r = 0, c = 0;
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+5][c+5] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        r++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        r++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        r = 0;
-//        c++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+5][c+5] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        c++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        c++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        return false;
-    }
-
-    public boolean checkDiagABlue(){
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                if(r >= 0 && r+3 <= 5 && c >= 0 && c+3 <=6) {
-                    if(blue[r][c] && blue[r + 1][c + 1] && blue[r + 2][c + 2] && blue[r + 3][c + 3])
-                        return true;
-                }
-            }
-        }
-
-        return false;
-        //        Piece a = new Piece (1);
-//        int count = 0;
-//        for (int r = 0; r < grid.length; r++) {
-//            for (int c = 0; c < grid[0].length; c++) {
-//                while(count < 4 && a.getColor() != 0){
-//                    if(isLegal(r, c) && grid[r][c] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r + 1, c + 1) && grid[r + 1][c + 1] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r + 2, c + 2) && grid[r + 2][c + 2] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r + 3, c + 3) && grid[r + 1][c + 3] == a.getColor())
-//                        count ++;
-//                }
-//            }
-//        }
-//
-//        if(count == 4)
-//            return true;
-//        return false;
     }
 
     public boolean checkDiagBRed(){
@@ -460,39 +468,8 @@ public class ConnectFourMain extends JPanel {
             }
         }
 
-        return false;
-//        Piece a = new Piece (1);
-//        int count = 0;
-//        for (int r = grid.length; r <= 0; r--) {
-//            for (int c = 0; c < grid[0].length; c++) {
-//                while(count < 4 && a.getColor() != 0){
-//                    if(isLegal(r, c) && grid[r][c] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r - 1, c - 1) && grid[r - 1][c - 1] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r - 2, c - 2) && grid[r - 2][c - 2] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r - 3, c - 3) && grid[r - 1][c - 3] == a.getColor())
-//                        count ++;
-//                }
-//            }
-//        }
-//
-//        if(count == 4)
-//            return true;
-//        return false;
-    }
-
-    public boolean checkDiagBBlue(){
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = grid[0].length - 1; c >= 0; c--) {
-                if(r >= 0 && r+3 <= 5 && c <= 6 && c-3 >= 0) {
-                    if(blue[r][c] && blue[r + 1][c - 1] && blue[r + 2][c - 2] && blue[r + 3][c - 3]) //TODO
-                        return true;
-                }
-            }
-        }
-
+        if(count == 4)
+            return true;
         return false;
     }
 
