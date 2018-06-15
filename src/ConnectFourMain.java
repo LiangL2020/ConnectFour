@@ -334,6 +334,13 @@ public class ConnectFourMain extends JPanel {
                 }
 
                 winner=0;
+                one.setEnabled(true);
+                two.setEnabled(true);
+                three.setEnabled(true);
+                four.setEnabled(true);
+                five.setEnabled(true);
+                six.setEnabled(true);
+                seven.setEnabled(true);
             }
         });
         restart.setBounds(67, 675, 80, 40);
@@ -627,6 +634,14 @@ public class ConnectFourMain extends JPanel {
         if(winner ==1){
             g2.setColor(Color.RED);
             g2.drawString("RED WINS", 400, 700);
+            g2.drawString("RED WINS", 100, 100);
+            one.setEnabled(false);
+            two.setEnabled(false);
+            three.setEnabled(false);
+            four.setEnabled(false);
+            five.setEnabled(false);
+            six.setEnabled(false);
+            seven.setEnabled(false);
         }
         if(winner ==2){
             g2.setColor(Color.BLACK);
