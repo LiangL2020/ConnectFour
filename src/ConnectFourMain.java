@@ -339,10 +339,16 @@ public class ConnectFourMain extends JPanel {
     //return true if didWin is false && everything is filled up
     public boolean didTie(){
 
+        boolean x = true;
+
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
 
-                if(grid[r][c]==0 && !didWin()){
+                if(grid[r][c]==0){
+                    x = false;
+                }
+
+                if(x && !didWin()){
                     System.out.println("didtie");
                     return true;
                 }
