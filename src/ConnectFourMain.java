@@ -340,12 +340,12 @@ public class ConnectFourMain extends JPanel {
 
     }
 
-    //check if it is in the board
-    public boolean isLegal(int r, int c){
-        if(r >= 0 && r < grid.length && c >= 0 && c < grid[0].length)
-            return true;
-        return false;
-    }
+//    //check if it is in the board
+//    public boolean isLegal(int r, int c){
+//        if(r >= 0 && r < grid.length && c >= 0 && c < grid[0].length)
+//            return true;
+//        return false;
+//    }
 
     //check if win (4 in a row)
     public boolean didWin(){
@@ -626,18 +626,18 @@ public class ConnectFourMain extends JPanel {
 
         if(winner ==1){
             g2.setColor(Color.RED);
-            g2.drawString("RED WINS", 100, 100);
+            g2.drawString("RED WINS", 400, 700);
         }
         if(winner ==2){
             g2.setColor(Color.BLACK);
             g2.drawRect(0,0,800,800);
             g2.setColor(Color.BLUE);
-            g2.drawString("BLUE WINS", 100, 100);
+            g2.drawString("BLUE WINS", 400, 700);
         }
 
         if(didTie()){
             g2.setColor(new Color (196, 4, 255));
-            g2.drawString("Tie!!!", 100, 100);
+            g2.drawString("Tie!!!", 400, 700);
         }
 
 
