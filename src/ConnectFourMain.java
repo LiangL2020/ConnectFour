@@ -338,17 +338,31 @@ public class ConnectFourMain extends JPanel {
 
     //return true if didWin is false && everything is filled up
     public boolean didTie(){
-        boolean didNot = true;
+
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
-                if(!didWin() && didNot)
-                    if(grid[r][c] != 0)
-                        didNot = false;
+
+                if(grid[r][c]==0 && !didWin()){
+                    System.out.println("didtie");
+                    return true;
+                }
+
             }
         }
-        if(!didNot)
-            return true;
+
         return false;
+
+//        boolean didNot = true;
+//        for (int r = 0; r < grid.length; r++) {
+//            for (int c = 0; c < grid[0].length; c++) {
+//                if(!didWin() && didNot)
+//                    if(grid[r][c] != 0)
+//                        didNot = false;
+//            }
+//        }
+//        if(!didNot)
+//            return true;
+//        return false;
     }
 
     //check if 4 in a row
@@ -453,12 +467,28 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
+    public boolean checkDiagARed(){
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                if(r >= 0 && r+3 <= 5 && c >= 0 && c+3 <=6) {
+                    if(red[r][c] && red[r + 1][c + 1] && red[r + 2][c + 2] && red[r + 3][c + 3]){
+                        winner=1;
+                        return true;
+
+                    }
+                }
+            }
+        }
+        return false;
+    }
     public boolean checkDiagABlue(){
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
                 if(r >= 0 && r+3 <= 5 && c >= 0 && c+3 <=6) {
-                    if(blue[r][c] && blue[r + 1][c + 1] && blue[r + 2][c + 2] && blue[r + 3][c + 3])
+                    if(blue[r][c] && blue[r + 1][c + 1] && blue[r + 2][c + 2] && blue[r + 3][c + 3]){
+                        winner = 2;
                         return true;
+                    }
                 }
             }
         }
@@ -469,8 +499,10 @@ public class ConnectFourMain extends JPanel {
         for (int r = 0; r < grid.length; r++) {
             for (int c = grid[0].length - 1; c >= 0; c--) {
                 if(r >= 0 && r+3 <= 5 && c <= 6 && c-3 >= 0) {
-                    if(red[r][c] && red[r + 1][c - 1] && red[r + 2][c - 2] && red[r + 3][c - 3])
+                    if(red[r][c] && red[r + 1][c - 1] && red[r + 2][c - 2] && red[r + 3][c - 3]){
+                        winner = 1;
                         return true;
+                    }
                 }
             }
         }
@@ -482,8 +514,11 @@ public class ConnectFourMain extends JPanel {
         for (int r = 0; r < grid.length; r++) {
             for (int c = grid[0].length - 1; c >= 0; c--) {
                 if(r >= 0 && r+3 <= 5 && c <= 6 && c-3 >= 0) {
-                    if(blue[r][c] && blue[r + 1][c - 1] && blue[r + 2][c - 2] && blue[r + 3][c - 3]) //TODO
+                    if(blue[r][c] && blue[r + 1][c - 1] && blue[r + 2][c - 2] && blue[r + 3][c - 3]){
+                        winner=2;
                         return true;
+
+                    }
                 }
             }
         }
@@ -567,19 +602,30 @@ public class ConnectFourMain extends JPanel {
             g2.setColor(Color.RED);
             g2.drawString("RED WINS", 100, 100);
         }
-
-
-
-        checkRow();
-        checkCol();
-
-        repaint();
         if(winner ==2){
             g2.setColor(Color.BLACK);
             g2.drawRect(0,0,800,800);
             g2.setColor(Color.BLUE);
             g2.drawString("BLUE WINS", 100, 100);
         }
+        if(didTie()){
+            g2.setColor(new Color (196, 4, 255));
+            g2.drawString("Tie!!!", 100, 100);
+        }
+
+
+
+
+        checkRow();
+        checkCol();
+        checkDiagARed();
+        checkDiagABlue();
+        checkDiagBRed();
+        checkDiagBBlue();
+        didTie();
+
+        repaint();
+
 
     }
 
