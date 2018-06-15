@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  * Created by student on 5/30/18.
@@ -320,13 +318,6 @@ public class ConnectFourMain extends JPanel {
 
     }
 
-    //check if it is in the board
-    public boolean isLegal(int r, int c){
-        if(r >= 0 && r < grid.length && c >= 0 && c < grid[0].length)
-            return true;
-        return false;
-    }
-
     //check if win (4 in a row)
     public boolean didWin(){
         if(checkRow() || checkCol() || checkDiagARed() || checkDiagABlue() || checkDiagBRed() || checkDiagBBlue())
@@ -413,50 +404,6 @@ public class ConnectFourMain extends JPanel {
         }
 
         return false;
-
-//        int r = 0, c = 0;
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+5][c+5] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        r++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        r++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        r = 0;
-//        c++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+5][c+5] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        c++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//        else if(red[r+4][c+4] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        c++;
-//
-//        if(red[r][c] && red[r+1][c+1] && red[r+2][c+2] && red[r+3][c+3])
-//            return true;
-//
-//        return false;
     }
 
     public boolean checkDiagABlue(){
@@ -468,28 +415,7 @@ public class ConnectFourMain extends JPanel {
                 }
             }
         }
-
         return false;
-        //        Piece a = new Piece (1);
-//        int count = 0;
-//        for (int r = 0; r < grid.length; r++) {
-//            for (int c = 0; c < grid[0].length; c++) {
-//                while(count < 4 && a.getColor() != 0){
-//                    if(isLegal(r, c) && grid[r][c] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r + 1, c + 1) && grid[r + 1][c + 1] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r + 2, c + 2) && grid[r + 2][c + 2] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r + 3, c + 3) && grid[r + 1][c + 3] == a.getColor())
-//                        count ++;
-//                }
-//            }
-//        }
-//
-//        if(count == 4)
-//            return true;
-//        return false;
     }
 
     public boolean checkDiagBRed(){
@@ -503,26 +429,6 @@ public class ConnectFourMain extends JPanel {
         }
 
         return false;
-//        Piece a = new Piece (1);
-//        int count = 0;
-//        for (int r = grid.length; r <= 0; r--) {
-//            for (int c = 0; c < grid[0].length; c++) {
-//                while(count < 4 && a.getColor() != 0){
-//                    if(isLegal(r, c) && grid[r][c] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r - 1, c - 1) && grid[r - 1][c - 1] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r - 2, c - 2) && grid[r - 2][c - 2] == a.getColor())
-//                        count ++;
-//                    if(isLegal(r - 3, c - 3) && grid[r - 1][c - 3] == a.getColor())
-//                        count ++;
-//                }
-//            }
-//        }
-//
-//        if(count == 4)
-//            return true;
-//        return false;
     }
 
     public boolean checkDiagBBlue(){
@@ -565,19 +471,18 @@ public class ConnectFourMain extends JPanel {
             for (int c = 0; c < grid[0].length; c++) {
 
                 if(red[r][c]== true){
-                    g2.setColor(new Color(255, 2, 0));
+                    g2.setColor(new Color(250, 62, 59));
                     g2.fillOval(15+c*103, 15+r*103, 90,90);
                 }
 
                 if(blue[r][c]==true){
-                    g2.setColor(new Color(5, 0, 255));
+                    g2.setColor(new Color(160, 191, 255));
                     g2.fillOval(15+c*103, 15+r*103, 90,90);
                 }
 
             }
 
         }
-
 
 //        int j = 0;
 //        int k = 0;
