@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  * Created by student on 5/30/18.
@@ -12,7 +10,7 @@ public class ConnectFourMain extends JPanel {
     //instance fields
     private int[][] grid;
     private int turn = 0;
-    private JButton one, two, three, four, five, six, seven;
+    private JButton one, two, three, four, five, six, seven, restart;
     private boolean[][] red, blue;
     private int winner; //if winner is 1 red won, if winner is 2 blue won.
 
@@ -319,6 +317,26 @@ public class ConnectFourMain extends JPanel {
 //            public void mouseExited(MouseEvent e) {
 //            }
 //        });
+        setLayout(null);
+        restart= new JButton("Restart");
+        add(restart);
+        restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                for (int i = 0; i < grid.length; i++) {
+                    for (int j = 0; j < grid[0].length; j++) {
+                        grid[i][j]=0;
+                        red[i][j]=false;
+                        blue[i][j]=false;
+
+                    }
+                }
+
+                winner=0;
+            }
+        });
+        restart.setBounds(67, 675, 80, 40);
 
     }
 
@@ -348,27 +366,15 @@ public class ConnectFourMain extends JPanel {
                     x = false;
                 }
 
-                if(x && !didWin()){
-                    System.out.println("didtie");
-                    return true;
-                }
-
             }
+
+        }
+        if(x && !didWin()){
+            System.out.println("didtie");
+            return true;
         }
 
         return false;
-
-//        boolean didNot = true;
-//        for (int r = 0; r < grid.length; r++) {
-//            for (int c = 0; c < grid[0].length; c++) {
-//                if(!didWin() && didNot)
-//                    if(grid[r][c] != 0)
-//                        didNot = false;
-//            }
-//        }
-//        if(!didNot)
-//            return true;
-//        return false;
     }
 
     //check if 4 in a row
@@ -512,7 +518,6 @@ public class ConnectFourMain extends JPanel {
                 }
             }
         }
-
         return false;
     }
 
@@ -572,6 +577,21 @@ public class ConnectFourMain extends JPanel {
 
         }
 
+        g2.setColor(new Color(255, 255, 93));
+        g2.fillRect(175, 675, 100, 40);
+
+        g2.setColor(Color.black);
+        g2.drawString("Turn:", 195, 700);
+
+        if(turn%2==0){
+            g2.setColor(Color.RED);
+            g2.drawString("RED", 230, 700);
+        }
+
+        if(turn%2==1){
+            g2.setColor(Color.BLUE);
+            g2.drawString("BLUE", 230, 700);
+        }
 
 //        int j = 0;
 //        int k = 0;
@@ -614,6 +634,7 @@ public class ConnectFourMain extends JPanel {
             g2.setColor(Color.BLUE);
             g2.drawString("BLUE WINS", 100, 100);
         }
+
         if(didTie()){
             g2.setColor(new Color (196, 4, 255));
             g2.drawString("Tie!!!", 100, 100);
