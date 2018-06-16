@@ -390,22 +390,18 @@ public class ConnectFourMain extends JPanel {
         for (int r = 5; r > -1; r--) {
             //for (int c = 0; c < 1; c++) {
             if (red[r][0] == red[r][1] && red[r][1]==red[r][2]&& red[r][2] == red[r][3]&& red[r][0]) {
-                System.out.println("redwins");
                 winner=1;
                 return true;
             }
             if (red[r][1] == red[r][2] && red[r][2]==red[r][3]&& red[r][3] == red[r][4]&& red[r][1]) {
-                System.out.println("redwins");
                 winner = 1;
                 return true;
             }
             if (red[r][2] == red[r][3] && red[r][3]==red[r][4]&& red[r][4] == red[r][5]&& red[r][2]) {
-                System.out.println("redwins");
                 winner =1;
                 return true;
             }
             if (red[r][3] == red[r][4] && red[r][4]==red[r][5]&& red[r][5] == red[r][6]&& red[r][3]) {
-                System.out.println("redwins");
                 winner = 1;
                 return true;
             }
@@ -415,22 +411,18 @@ public class ConnectFourMain extends JPanel {
 
         for (int r = 5; r > -1; r--) {
             if (blue[r][0] == blue[r][1] && blue[r][1]==blue[r][2]&& blue[r][2] == blue[r][3]&& blue[r][0]) {
-                System.out.println("bluewins");
                 winner=2;
                 return true;
             }
             if (blue[r][1] == blue[r][2] && blue[r][2]==blue[r][3]&& blue[r][3] == blue[r][4]&& blue[r][1]) {
-                System.out.println("bluewins");
                 winner=2;
                 return true;
             }
             if (blue[r][2] == blue[r][3] && blue[r][3]==blue[r][4]&& blue[r][4] == blue[r][5]&& blue[r][2]) {
-                System.out.println("bluewins");
                 winner=2;
                 return true;
             }
             if (blue[r][3] == blue[r][4] && blue[r][4]==blue[r][5]&& blue[r][5] == blue[r][6]&& blue[r][3]) {
-                System.out.println("bluewins");
                 winner = 2;
                 return true;
             }
@@ -444,17 +436,14 @@ public class ConnectFourMain extends JPanel {
         for (int c = 0; c < 7; c++) {
             //for (int c = 0; c < 1; c++) {
             if (red[5][c] == red[4][c] && red[4][c] == red[3][c] && red[3][c] == red[2][c] && red[5][c]) {
-                System.out.println("redwins");
                 winner = 1;
                 return true;
             }
             if (red[4][c] == red[3][c] && red[3][c] == red[2][c] && red[2][c] == red[1][c] && red[4][c]) {
-                System.out.println("redwins");
                 winner = 1;
                 return true;
             }
             if (red[3][c] == red[2][c] && red[2][c] == red[1][c] && red[1][c] == red[0][c] && red[3][c]) {
-                System.out.println("redwins");
                 winner = 1;
                 return true;
             }
@@ -464,17 +453,14 @@ public class ConnectFourMain extends JPanel {
         for (int c = 0; c < 7; c++) {
             //for (int c = 0; c < 1; c++) {
             if (blue[5][c] == blue[4][c] && blue[4][c] == blue[3][c] && blue[3][c] == blue[2][c] && blue[5][c]) {
-                System.out.println("bluewins");
                 winner = 2;
                 return true;
             }
             if (blue[4][c] == blue[3][c] && blue[3][c] == blue[2][c] && blue[2][c] == blue[1][c] && blue[4][c]) {
-                System.out.println("bluewins");
                 winner = 2;
                 return true;
             }
             if (blue[3][c] == blue[2][c] && blue[2][c] == blue[1][c] && blue[1][c] == blue[0][c] && blue[3][c]) {
-                System.out.println("bluewins");
                 winner = 2;
                 return true;
 //
@@ -633,7 +619,6 @@ public class ConnectFourMain extends JPanel {
 
         if(winner ==1){
             g2.setColor(Color.RED);
-            g2.drawString("RED WINS", 400, 700);
             g2.drawString("RED WINS", 100, 100);
             one.setEnabled(false);
             two.setEnabled(false);
@@ -644,10 +629,15 @@ public class ConnectFourMain extends JPanel {
             seven.setEnabled(false);
         }
         if(winner ==2){
-            g2.setColor(Color.BLACK);
-            g2.drawRect(0,0,800,800);
             g2.setColor(Color.BLUE);
             g2.drawString("BLUE WINS", 400, 700);
+            one.setEnabled(false);
+            two.setEnabled(false);
+            three.setEnabled(false);
+            four.setEnabled(false);
+            five.setEnabled(false);
+            six.setEnabled(false);
+            seven.setEnabled(false);
         }
 
         if(didTie()){
