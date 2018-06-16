@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by student on 5/30/18.
+ * Created by Liang, Megan, Uma. on 5/30/18.
  */
 public class ConnectFourMain extends JPanel {
     //instance fields
@@ -12,7 +12,7 @@ public class ConnectFourMain extends JPanel {
     private int turn = 0;
     private JButton one, two, three, four, five, six, seven, restart;
     private boolean[][] red, blue;
-    private int winner; //if winner is 1 red won, if winner is 2 blue won.
+    private int winner; //if winner is 1, red won; if winner is 2, blue won; if 0, it's open.
 
 
     //constructor
@@ -21,10 +21,9 @@ public class ConnectFourMain extends JPanel {
         grid = new int[6][7];
         red= new boolean[6][7];
         blue= new boolean[6][7];
-        System.out.println(winner);
 
         //-1 is blue, 0 is open, 1 is red
-        //assigns 0 to all positions
+        //assigns 0 to all positions even though int array elements are always initialized as 0 and boolean arr elems as false XD
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
                 grid[r][c] = 0;
@@ -33,37 +32,32 @@ public class ConnectFourMain extends JPanel {
             }
         }
 
+        //buttons
         setLayout(null);
         one = new JButton("");
         add(one);
         one.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 int r = grid.length - 1;
-
-                    while (r > -1 && !isItPlayable(r, 0)) {
-                        r--;
+                while (r > -1 && !isItPlayable(r, 0)) {
+                    r--;
+                }
+                if(r < 0){
+                    //no move in this col
+                }
+                else{
+                    if (turn % 2 == 0) {
+                        grid[r][0] = 1;
+                        red[r][0] = true;
+                        turn++;
                     }
-                    if(r < 0){
-                        //no move in this col
+                    else {
+                        grid[r][0] = -1;
+                        blue[r][0] = true;
+                        turn++;
                     }
-                    else{
-                        if (turn % 2 == 0) {
-                            grid[r][0] = 1;
-                            red[r][0] = true;
-                            turn++;
-                        }
-
-                        else {
-                            grid[r][0] = -1;
-                            blue[r][0] = true;
-                            turn++;
-                        }
-
-                    }
-
-                System.out.println(turn);
+                }
             }
         });
         one.setBounds(22, 10, 80, 40);
@@ -74,9 +68,7 @@ public class ConnectFourMain extends JPanel {
         two.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 int r = grid.length - 1;
-
                 while (r > -1 && !isItPlayable(r, 1)) {
                     r--;
                 }
@@ -90,17 +82,12 @@ public class ConnectFourMain extends JPanel {
                         turn++;
 
                     }
-
                     else {
                         grid[r][1] = -1;
                         blue[r][1] = true;
                         turn++;
-
                     }
-
                 }
-
-                System.out.println(turn);
             }
         });
         two.setBounds(125, 10, 80, 40);
@@ -111,9 +98,7 @@ public class ConnectFourMain extends JPanel {
         three.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 int r = grid.length - 1;
-
                 while (r > -1 && !isItPlayable(r, 2)) {
                     r--;
                 }
@@ -127,17 +112,12 @@ public class ConnectFourMain extends JPanel {
                         turn++;
 
                     }
-
                     else {
                         grid[r][2] = -1;
                         blue[r][2] = true;
                         turn++;
-
                     }
-
                 }
-
-                System.out.println(turn);
             }
         });
         three.setBounds(228, 10, 80, 40);
@@ -148,9 +128,7 @@ public class ConnectFourMain extends JPanel {
         four.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 int r = grid.length - 1;
-
                 while (r > -1 && !isItPlayable(r, 3)) {
                     r--;
                 }
@@ -162,19 +140,13 @@ public class ConnectFourMain extends JPanel {
                         grid[r][3] = 1;
                         red[r][3] = true;
                         turn++;
-
                     }
-
                     else {
                         grid[r][3] = -1;
                         blue[r][3] = true;
                         turn++;
-
                     }
-
                 }
-
-                System.out.println(turn);
             }
         });
         four.setBounds(331, 10, 80, 40);
@@ -186,7 +158,6 @@ public class ConnectFourMain extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int r = grid.length - 1;
-
                 while (r > -1 && !isItPlayable(r, 4)) {
                     r--;
                 }
@@ -200,16 +171,12 @@ public class ConnectFourMain extends JPanel {
                         turn++;
 
                     }
-
                     else {
                         grid[r][4] = -1;
                         blue[r][4] = true;
                         turn++;
-
                     }
-
                 }
-
             }
         });
         five.setBounds(434, 10, 80, 40);
@@ -221,7 +188,6 @@ public class ConnectFourMain extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int r = grid.length - 1;
-
                 while (r > -1 && !isItPlayable(r, 5)) {
                     r--;
                 }
@@ -233,16 +199,12 @@ public class ConnectFourMain extends JPanel {
                         grid[r][5] = 1;
                         red[r][5] = true;
                         turn++;
-
                     }
-
                     else {
                         grid[r][5] = -1;
                         blue[r][5] = true;
                         turn++;
-
                     }
-
                 }
             }
         });
@@ -255,7 +217,6 @@ public class ConnectFourMain extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int r = grid.length - 1;
-
                 while (r > -1 && !isItPlayable(r, 6)) {
                     r--;
                 }
@@ -267,69 +228,29 @@ public class ConnectFourMain extends JPanel {
                         grid[r][6] = 1;
                         red[r][6] = true;
                         turn++;
-
                     }
-
                     else {
                         grid[r][6] = -1;
                         blue[r][6] = true;
                         turn++;
-
                     }
-
                 }
             }
         });
         seven.setBounds(640, 10, 80, 40);
 /////////////////////////////////////////////////////////
-//
-//        //-1 is blue, 0 is open, 1 is red
-//        //assigns 0 to all positions
-//        for (int r = 0; r < grid.length; r++) {
-//            for (int c = 0; c < grid[0].length; c++) {
-//                grid[r][c] = 0;
-//            }
-//        }
 
-//        this.addMouseListener(new MouseListener() {
-//            public void mouseClicked(MouseEvent e) {
-//            }
-//
-//            public void mousePressed(MouseEvent e) {
-//                int x = e.getX();
-//                int y = e.getY();
-//                int w = ConnectFourMain.this.getWidth() / 3;
-//                int h = ConnectFourMain.this.getHeight() / 3;
-//                int r = y / h;
-//                int c = x / w;
-//
-//                    ConnectFourMain.this.turnCounter();
-//
-//                ConnectFourMain.this.repaint();
-//            }
-//
-//            public void mouseReleased(MouseEvent e) {
-//            }
-//
-//            public void mouseEntered(MouseEvent e) {
-//            }
-//
-//            public void mouseExited(MouseEvent e) {
-//            }
-//        });
         setLayout(null);
         restart= new JButton("Restart");
         add(restart);
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 for (int i = 0; i < grid.length; i++) {
                     for (int j = 0; j < grid[0].length; j++) {
                         grid[i][j]=0;
                         red[i][j]=false;
                         blue[i][j]=false;
-
                     }
                 }
 
@@ -344,49 +265,36 @@ public class ConnectFourMain extends JPanel {
             }
         });
         restart.setBounds(67, 675, 80, 40);
-
     }
 
-//    //check if it is in the board
-//    public boolean isLegal(int r, int c){
-//        if(r >= 0 && r < grid.length && c >= 0 && c < grid[0].length)
-//            return true;
-//        return false;
-//    }
-
-    //check if win (4 in a row)
+    //is there a 4 in a row
     public boolean didWin(){
-        if(checkRow() || checkCol() || checkDiagARed() || checkDiagABlue() || checkDiagBRed() || checkDiagBBlue())
+        if(checkRow() || checkCol() || checkDiagARed() || checkDiagABlue() || checkDiagBRed() || checkDiagBBlue()){
             return true;
+        }
         return false;
     }
 
-    //return true if didWin is false && everything is filled up
+    //return true if didWin is false && all spaces are filled up
     public boolean didTie(){
-
         boolean x = true;
-
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
-
                 if(grid[r][c]==0){
                     x = false;
                 }
-
             }
-
         }
         if(x && !didWin()){
-            System.out.println("didtie");
             return true;
         }
-
         return false;
     }
 
-    //check if 4 in a row
+    //check rows
     public boolean checkRow(){
 
+        //check red win
         for (int r = 5; r > -1; r--) {
             //for (int c = 0; c < 1; c++) {
             if (red[r][0] == red[r][1] && red[r][1]==red[r][2]&& red[r][2] == red[r][3]&& red[r][0]) {
@@ -408,7 +316,7 @@ public class ConnectFourMain extends JPanel {
 //
         }
 
-
+        //check blue win
         for (int r = 5; r > -1; r--) {
             if (blue[r][0] == blue[r][1] && blue[r][1]==blue[r][2]&& blue[r][2] == blue[r][3]&& blue[r][0]) {
                 winner=2;
@@ -431,8 +339,10 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
-    //check if 4 in a col
+    //check columns
     public boolean checkCol() {
+
+        //check red win
         for (int c = 0; c < 7; c++) {
             //for (int c = 0; c < 1; c++) {
             if (red[5][c] == red[4][c] && red[4][c] == red[3][c] && red[3][c] == red[2][c] && red[5][c]) {
@@ -447,11 +357,10 @@ public class ConnectFourMain extends JPanel {
                 winner = 1;
                 return true;
             }
-
-//
         }
+
+        //check blue win
         for (int c = 0; c < 7; c++) {
-            //for (int c = 0; c < 1; c++) {
             if (blue[5][c] == blue[4][c] && blue[4][c] == blue[3][c] && blue[3][c] == blue[2][c] && blue[5][c]) {
                 winner = 2;
                 return true;
@@ -465,13 +374,13 @@ public class ConnectFourMain extends JPanel {
                 return true;
 //
             }
-
-
-
         }
         return false;
     }
 
+    //check diagonals (A is top left - bottom r; B is top right - bottom l)
+
+    //check red win A
     public boolean checkDiagARed(){
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
@@ -486,6 +395,8 @@ public class ConnectFourMain extends JPanel {
         }
         return false;
     }
+
+    //check blue win A
     public boolean checkDiagABlue(){
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
@@ -500,6 +411,7 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
+    //check red win B
     public boolean checkDiagBRed(){
         for (int r = 0; r < grid.length; r++) {
             for (int c = grid[0].length - 1; c >= 0; c--) {
@@ -514,6 +426,7 @@ public class ConnectFourMain extends JPanel {
         return false;
     }
 
+    //check blue win B
     public boolean checkDiagBBlue(){
         for (int r = 0; r < grid.length; r++) {
             for (int c = grid[0].length - 1; c >= 0; c--) {
@@ -526,19 +439,18 @@ public class ConnectFourMain extends JPanel {
                 }
             }
         }
-
         return false;
     }
 
+    //is the space open
     public boolean isItPlayable(int r, int c){
-
         if(grid[r][c]==0){
             return true;
         }
-
         return false;
     }
 
+    //paint
     public void paintComponent(Graphics g) {
         Graphics2D g2= (Graphics2D) g;
 
@@ -550,7 +462,6 @@ public class ConnectFourMain extends JPanel {
                 g2.setColor(new Color(255, 255, 255));
                 g2.fillOval(r, c, 90,90);
             }
-
         }
 
         for (int r = 0; r < grid.length; r++) {
@@ -567,7 +478,6 @@ public class ConnectFourMain extends JPanel {
                 }
 
             }
-
         }
 
         g2.setColor(new Color(255, 255, 93));
@@ -586,40 +496,10 @@ public class ConnectFourMain extends JPanel {
             g2.drawString("BLUE", 230, 700);
         }
 
-//        int j = 0;
-//        int k = 0;
-//        while (j<6){
-//            for (int r = 15; r < 7*squarelength; r= r+103) {
-//                for (int c = 15; c < 6*squarelength; c= c+103) {
-//                    if (red[j][k]){
-//                        g2.setColor(new Color(255, 2, 0));
-//                        g2.fillOval(r, c, 90,90);
-//                    }
-//                    if(blue[j][k]){
-//                        g2.setColor(new Color(5, 0, 255));
-//                        g2.fillOval(r, c, 90,90);
-//                    }
-//                    k++;
-//                    if(k==7){
-//                        k=0;
-//                        j++;
-//                    }
-////                    g2.setColor(new Color(255, 255, 255));
-////                    g2.fillOval(r, c, 90,90);
-//                }
-//        }
-//
-//
-//    }
-
-//        if(winner ==0 && didTie()){
-//            g2.drawString("IT'S A TIE",100,100);
-//
-//        }
-
         if(winner ==1){
             g2.setColor(Color.RED);
-            g2.drawString("RED WINS", 100, 100);
+            g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+            g2.drawString("RED WINS!", 400, 700);
             one.setEnabled(false);
             two.setEnabled(false);
             three.setEnabled(false);
@@ -630,7 +510,8 @@ public class ConnectFourMain extends JPanel {
         }
         if(winner ==2){
             g2.setColor(Color.BLUE);
-            g2.drawString("BLUE WINS", 400, 700);
+            g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+            g2.drawString("BLUE WINS!", 400, 700);
             one.setEnabled(false);
             two.setEnabled(false);
             three.setEnabled(false);
@@ -642,12 +523,11 @@ public class ConnectFourMain extends JPanel {
 
         if(didTie()){
             g2.setColor(new Color (196, 4, 255));
-            g2.drawString("Tie!!!", 400, 700);
+            g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+            g2.drawString("IT'S A TIE!", 400, 700);
         }
 
-
-
-
+        //it's a method-calling partay
         checkRow();
         checkCol();
         checkDiagARed();
@@ -657,10 +537,9 @@ public class ConnectFourMain extends JPanel {
         didTie();
 
         repaint();
-
-
     }
 
+    //psvm
     public static void main(String[] args) {
         JFrame frame = new JFrame("Connect 4");
         frame.setDefaultCloseOperation(3);
@@ -674,6 +553,5 @@ public class ConnectFourMain extends JPanel {
         frame.pack();
         frame.setVisible(true);
 
-
     }
-}
+}//557 is the 102nd prime number :)
