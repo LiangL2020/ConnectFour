@@ -98,7 +98,9 @@ public class ConnectFourMain extends JPanel {
         three.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 int r = grid.length - 1;
+
                 while (r > -1 && !isItPlayable(r, 2)) {
                     r--;
                 }
@@ -499,7 +501,7 @@ public class ConnectFourMain extends JPanel {
         if(winner ==1){
             g2.setColor(Color.RED);
             g.setFont(new Font("TimesRoman", Font.BOLD, 20));
-            g2.drawString("RED WINS!", 400, 700);
+            g2.drawString("RED WINS", 400, 700);
             one.setEnabled(false);
             two.setEnabled(false);
             three.setEnabled(false);
@@ -539,7 +541,6 @@ public class ConnectFourMain extends JPanel {
         repaint();
     }
 
-    //psvm
     public static void main(String[] args) {
         JFrame frame = new JFrame("Connect 4");
         frame.setDefaultCloseOperation(3);
